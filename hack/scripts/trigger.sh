@@ -61,3 +61,4 @@ fi
 git add --all
 git commit -a -s -m "$COMMIT_MSG" -m "/skip-trigger"
 git push -u origin $PR_BRANCH -f
+
