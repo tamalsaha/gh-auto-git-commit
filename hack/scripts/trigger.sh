@@ -39,7 +39,8 @@ skip_trigger && {
 repo_uptodate() {
     # gomodfiles=(go.mod go.sum vendor/modules.txt)
     gomodfiles=(go.sum vendor/modules.txt)
-    changed=($(git diff --name-only))
+    # https://remarkablemark.org/blog/2017/10/12/check-git-dirty/
+    changed=($(git status --porcelain | awk '{print $2}'))
     changed+=("${gomodfiles[@]}")
     # https://stackoverflow.com/a/28161520
     diff=($(echo ${changed[@]} ${gomodfiles[@]} | tr ' ' '\n' | sort | uniq -u))
@@ -52,8 +53,7 @@ echo "automatically apply post commit stuff"
 touch auto-$(date +%s)
 ls -l
 
-# https://remarkablemark.org/blog/2017/10/12/check-git-dirty/
-if [ -n $(git status -s) ] && repo_uptodate; then
+if repo_uptodate ; then
     echo "Repository is up-to-date."
     exit 0
 fi
