@@ -26,7 +26,7 @@ jobs:
         run: |
           git config user.name "${GITHUB_USER}"
           git config user.email "${GITHUB_USER}@appscode.com"
-          git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@${GITHUB_REPOSITORY}.git"
+          git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git"
 
       - name: Update charts
         run: |
