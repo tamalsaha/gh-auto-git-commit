@@ -24,6 +24,7 @@ jobs:
           # GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.LGTM_GITHUB_TOKEN }}
         run: |
+          echo $GITHUB_SERVER_URL
           git config user.name "${GITHUB_USER}"
           git config user.email "${GITHUB_USER}@appscode.com"
           git remote set-url origin "https://${GITHUB_USER}:${GITHUB_TOKEN}@${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git"
