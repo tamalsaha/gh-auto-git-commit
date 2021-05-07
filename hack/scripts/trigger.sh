@@ -50,6 +50,7 @@ echo "automatically apply post commit stuff"
 
 # run command to update repo
 touch auto-$(date +%s)
+ls -l
 
 if repo_uptodate; then
     echo "Repository is up-to-date."
