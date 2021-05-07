@@ -53,7 +53,7 @@ touch auto-$(date +%s)
 ls -l
 
 # https://remarkablemark.org/blog/2017/10/12/check-git-dirty/
-if [ -z $(git status -s) ] && repo_uptodate; then
+if [ -n $(git status -s) ] && repo_uptodate; then
     echo "Repository is up-to-date."
     exit 0
 fi
